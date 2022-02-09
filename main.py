@@ -4,6 +4,7 @@ import time
 from datetime import datetime as dt
 import pandas
 
+
 sender   = "sample.00.email@gmail.com"
 recevier = "bigtvindia@gmail.com" #bigtvindia@gmail.com
 password = os.environ['GMAILPASS']
@@ -82,16 +83,18 @@ sendMessage(mailObj, recevier, subject, contentWithAttachment)
 def generate_file(filename, content):
   with open(filename, 'w') as file:
     file.write(str(content))
+    
 df1 = pandas.read_csv('billdetail.csv')
 for index,row in df1.iterrows():
   name = row['name']
+  filename = name+".txt"
   amount = row['amount']
   recevier = row['email']
-  generate_file(name, amount)
+  generate_file(filename, amount)
   subject = "Bill details"
   contents = [ f""" hey { name }, you have to pay { amount }
                Bill is attached!""",
-               name,
+               filename,
              ]
   sendMessage(mailObj, recevier, subject, contents)
   
