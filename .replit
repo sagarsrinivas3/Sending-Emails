@@ -28,9 +28,11 @@ syntax = "python"
 # The command to start the interpreter.
 [interpreter]
 command = [
-  "bash",
-  "-c",
-  "LD_LIBRARY_PATH=\"${PYTHON_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}\" exec prybar-python3 -q --ps1 \"\u0001\u001b[33m\u0002\u0001\u001b[00m\u0002 \" -i",
+  "prybar-python3",
+  "-q",
+  "--ps1",
+  "\u0001\u001b[33m\u0002\u0001\u001b[00m\u0002 ",
+  "-i",
 ]
 
 # The environment variables needed to correctly start Python and use the
